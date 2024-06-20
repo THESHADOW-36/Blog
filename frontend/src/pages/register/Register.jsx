@@ -1,0 +1,129 @@
+import React, { useState } from 'react';
+import './Register.css'
+import axios from 'axios';
+// import { URL } from '../../constant/Url';
+import toast from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom';
+
+const Register = () => {
+   const [userData, setUserData] = useState({ name: "", dob: "", phone: "", email: "", password: "", confirmPassword: "" });
+   const [validation, setValidation] = useState({ name: false, dob: false, phone: false, email: false, password: false, confirmPassword: false })
+   const router = useNavigate();
+
+   const handleChange = (event) => {
+
+      if (event.target.name === "phone" && event.target.value.length > 10) {
+         return console.log("Upto 10 digits")
+      }
+
+      setUserData({ ...userData, [event.target.name]: event.target.value })
+      setValidation({ ...validation, [event.target.name]: false })
+
+      if (event.target.name === "confirmPassword" && event.target.value !== userData.password) {
+         setValidation({ ...validation, [event.target.name]: true })
+      }
+   }
+
+   const handleSubmit = (event) => {
+      event.preventDefault();
+      let isValid = true;
+      const updatedValidation = {};
+
+      for (const field in userData) {
+         if (!userData[field]) {
+            updatedValidation[field] = true;
+            isValid = false;
+         } else {
+            updatedValidation[field] = false;
+         }
+      }
+
+      setValidation(updatedValidation);
+      if (!isValid) {
+         return console.log("All fields are mandatory");
+      }
+
+      if (userData.password !== userData.confirmPassword) {
+         setValidation({ ...validation, confirmPassword: true })
+         return toast.error("Invalid Password")
+      }
+
+      // try {
+      //    axios
+      //       .post(URL.register, userData)
+      //       .then((res) => {
+      //          setUserData({ name: "", dob: "", phone: "", email: "", password: "", confirmPassword: "" })
+      //          toast.success("Registered Successfully")
+      //          router("/login")
+      //       })
+      //       .catch((err) => {
+      //          // toast.error(err.response.data.error)
+      //          setValidation({ ...validation, email: true })
+      //       })
+      // } catch (error) {
+      //    console.log(error)
+      // }
+   }
+
+   return (
+      <div className='authContainer'>
+         <div className='formContainer'>
+            <h3 className='formTitle'>Register</h3>
+            <form onSubmit={handleSubmit}>
+               <div className='formLay'>
+                  <input className='formInput' type="text" name='name' placeholder='Name' value={userData.name} onChange={handleChange} />
+                  {validation.name &&
+                     <p className='formValidation'>Enter your name</p>
+                  }
+               </div>
+               <div className='formLay'>
+                  <input className='formInput' type="date" name='dob' placeholder='Date Of Birth' value={userData.dob} onChange={handleChange} />
+                  {validation.dob &&
+                     <p className='formValidation'>Enter your Date Of Birth</p>
+                  }
+               </div>
+               <div className='formLay'>
+                  <input className='formInput' type="number" name='phone' placeholder='Phone Number' value={userData.phone} onChange={handleChange} />
+                  {validation.phone &&
+                     <p className='formValidation'>Enter your Phone Number</p>
+                  }
+               </div>
+               <div className='formLay'>
+                  <input className='formInput' type="email" name='email' placeholder='Email ID' value={userData.email} onChange={handleChange} />
+                  {(validation.email && !userData.email) &&
+                     <p className='formValidation'>Enter your Email ID</p>
+                  }
+                  {(validation.email && userData.email) &&
+                     <p className='formValidation'>Duplicate field value entered</p>
+                  }
+               </div>
+               <div className='formLay'>
+                  <input className='formInput' type="password" name='password' placeholder='Password' value={userData.password} onChange={handleChange} />
+                  {(validation.password && !userData.password) &&
+                     <p className='formValidation'>Set your password</p>
+                  }
+                  {(validation.password && userData.password) &&
+                     <p className='formValidation'>Password is not identical</p>
+                  }
+               </div>
+               <div className='formLay'>
+                  <input className='formInput' type="password" name='confirmPassword' placeholder='Confirm Password' value={userData.confirmPassword} onChange={handleChange} />
+                  {(validation.confirmPassword && !userData.confirmPassword) &&
+                     <p className='formValidation'>Confirm your Password</p>
+                  }
+                  {(validation.confirmPassword && userData.confirmPassword) &&
+                     <p className='formValidation'>Password is not identical</p>
+                  }
+               </div>
+
+               <div className='btnLay'>
+                  <button className='submitBtn' type='submit'>Submit</button>
+                  <p className='clickHere' onClick={() => router("/login")}>Not yet registered? Click here</p>
+               </div>
+            </form>
+         </div >
+      </div >
+   )
+}
+
+export default Register

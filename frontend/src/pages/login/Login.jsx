@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import "./../register/Register.css";
-// import { URL } from '../../constant/Url';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { Url } from '../../constant/Url';
 
 const Login = () => {
    const [userData, setUserData] = useState({ email: "", password: "" });
@@ -36,32 +36,32 @@ const Login = () => {
          return console.log("All fields are mandatory");
       }
 
-      //  try {
-      //    axios
-      //      .post(URL.login, userData)
-      //      .then((res) => {
-      //        localStorage.setItem("user-token", res.data.token)
-      //        setUserData({ email: "", password: "" })
-      //        router('/')
-      //        toast.success("Logged In Successfully")
-      //      })
-      //      .catch((err) => {
-      //        // toast.error(err.response.data.message)
-      //        if (err.response.data.message === "User is not found") {
-      //          setValidation({ ...validation, email: true })
-      //        }
-      //        if (err.response.data.message === "Incorrect Password") {
-      //          setValidation({ ...validation, password: true })
-      //        }
-      //      })
-      //  } catch (error) {
-      //    console.log(error)
-      //  }
+      try {
+         axios
+            .post(Url.login, userData)
+            .then((res) => {
+               localStorage.setItem("UserToken", res.data.token)
+               setUserData({ email: "", password: "" })
+               router('/')
+               toast.success("Logged In Successfully")
+            })
+            .catch((err) => {
+               toast.error(err.response.data.error)
+               if (err.response.data.error === "User is not found") {
+                  setValidation({ ...validation, email: true })
+               }
+               if (err.response.data.error === "Incorrect Password") {
+                  setValidation({ ...validation, password: true })
+               }
+            })
+      } catch (error) {
+         console.log(error)
+      }
    }
 
    return (
       <div className='authContainer'>
-         <div className='formContainer'>
+         <div className='formContainerLogin'>
             <h3 className='formTitle'>Login</h3>
             <form onSubmit={handleSubmit}>
                <div className='formLay mt-3'>

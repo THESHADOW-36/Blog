@@ -19,8 +19,13 @@ const Blog = new Schema({
       type: String,
    },
    createdBy: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User"
+      _id: {
+         type: mongoose.Schema.Types.ObjectId,
+         ref: "User"
+      },
+      firstName: { type: String },
+      lastName: { type: String, },
+      email: { type: String, },
    },
    createdAt: {
       type: Date,

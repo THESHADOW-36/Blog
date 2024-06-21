@@ -1,5 +1,4 @@
 import mongoose, { Schema, model } from 'mongoose';
-import { genSalt, hash, compare } from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
 const User = new Schema({
@@ -58,24 +57,10 @@ const User = new Schema({
     }
 });
 
-User.pre('save', async function (next) {
-    if (!this.isModified('password')) {
-        return next();
-    }
-    const salt = await genSalt(10);
-    this.password = await hash(this.password, salt);
-    next();
-});
-
 User.methods.getJWTWebToken = function () {
     return jwt.sign({ id: this._id }, process.env.JWT_TOKEN_SECRET_KEY, {
         expiresIn: process.env.JWT_TOKEN_EXPIRE
     });
 }
-
-User.methods.matchPassword = async function (enterPassword) {
-    return await compare(enterPassword, this.password);
-}
-
 
 export default model('User', User);

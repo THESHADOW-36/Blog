@@ -36,6 +36,9 @@ export const getBookmark = asyncHandler(async (req, res, next) => {
 export const removeBookmark = asyncHandler(async (req, res, next) => {
    const { blogId } = req.body;
 
+   console.log("blogId :", blogId)
+   console.log("req.user.id :", req.user.id)
+
    const user = await User.findById(req.user.id);
 
    if (!user) return next(new ErrorResponse('User is not found', 401))

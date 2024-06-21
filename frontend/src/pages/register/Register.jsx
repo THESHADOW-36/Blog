@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import './Register.css'
 import axios from 'axios';
-// import { URL } from '../../constant/Url';
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom';
+import { Url } from '../../constant/Url';
 
 const Register = () => {
-   const [userData, setUserData] = useState({ name: "", dob: "", phone: "", email: "", password: "", confirmPassword: "" });
-   const [validation, setValidation] = useState({ name: false, dob: false, phone: false, email: false, password: false, confirmPassword: false })
+   const [userData, setUserData] = useState({ firstName: "", lastName: "", dob: "", phone: "", email: "", password: "", confirmPassword: "" });
+   const [validation, setValidation] = useState({ firstName: false, lastName: false, dob: false, phone: false, email: false, password: false, confirmPassword: false })
    const router = useNavigate();
 
    const handleChange = (event) => {
@@ -48,21 +48,21 @@ const Register = () => {
          return toast.error("Invalid Password")
       }
 
-      // try {
-      //    axios
-      //       .post(URL.register, userData)
-      //       .then((res) => {
-      //          setUserData({ name: "", dob: "", phone: "", email: "", password: "", confirmPassword: "" })
-      //          toast.success("Registered Successfully")
-      //          router("/login")
-      //       })
-      //       .catch((err) => {
-      //          // toast.error(err.response.data.error)
-      //          setValidation({ ...validation, email: true })
-      //       })
-      // } catch (error) {
-      //    console.log(error)
-      // }
+      try {
+         axios
+            .post(Url.register, userData)
+            .then((res) => {
+               setUserData({ firstName: "", lastName: "", dob: "", phone: "", email: "", password: "", confirmPassword: "" })
+               toast.success("Registered Successfully")
+               router("/login")
+            })
+            .catch((err) => {
+               // toast.error(err.response.data.error)
+               setValidation({ ...validation, email: true })
+            })
+      } catch (error) {
+         console.log(error)
+      }
    }
 
    return (
@@ -70,11 +70,19 @@ const Register = () => {
          <div className='formContainer'>
             <h3 className='formTitle'>Register</h3>
             <form onSubmit={handleSubmit}>
-               <div className='formLay'>
-                  <input className='formInput' type="text" name='name' placeholder='Name' value={userData.name} onChange={handleChange} />
-                  {validation.name &&
-                     <p className='formValidation'>Enter your name</p>
-                  }
+               <div className='d-flex '>
+                  <div className='formLay w-50 me-2'>
+                     <input className='formInput' type="text" name='firstName' placeholder='First Name' value={userData.firstName} onChange={handleChange} />
+                     {validation.firstName &&
+                        <p className='formValidation'>Enter your first name</p>
+                     }
+                  </div>
+                  <div className='formLay w-50 ms-2'>
+                     <input className='formInput' type="text" name='lastName' placeholder='Last Name' value={userData.lastName} onChange={handleChange} />
+                     {validation.lastName &&
+                        <p className='formValidation'>Enter your last name</p>
+                     }
+                  </div>
                </div>
                <div className='formLay'>
                   <input className='formInput' type="date" name='dob' placeholder='Date Of Birth' value={userData.dob} onChange={handleChange} />

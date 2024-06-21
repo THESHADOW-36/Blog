@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast'
+import Context from './constant/Context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -35,7 +36,9 @@ root.render(
           },
         }}
       />
-      <App />
+      <Context>
+        <App />
+      </Context>
     </BrowserRouter>
   </React.StrictMode>
 );

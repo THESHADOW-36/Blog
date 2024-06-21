@@ -1,11 +1,14 @@
 import asyncHandler from "../middleware/async.js";
 import Blog from "../models/blog.js";
+import User from "../models/user.js";
 import ErrorResponse from "../utils/errorResponse.js";
 
 export const addBlog = asyncHandler(async (req, res, next) => {
    const { title, description, category, image } = req.body;
 
-   const blog = await Blog.create({ title, description, category, image, createdBy: req.user.id });
+   const user = await User.findById(req.user.id).select('-role -phone -dob -password -blog -createdAt -__v')
+
+   const blog = await Blog.create({ title, description, category, image, createdBy: user });
 
    res.status(200).json({ success: true, blog });
 })

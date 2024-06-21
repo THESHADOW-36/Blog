@@ -6,7 +6,7 @@ import { addBookmark, removeBookmark, getBookmark } from "../controllers/bookmar
 const blog = Router();
 
 blog.post('/content', protecter, addBlog)
-blog.get('/content', protecter, getBlog)
+blog.get('/content', getBlog)
 blog.put('/content/:id', protecter, editBlog)
 blog.delete('/content/:id', protecter, deleteBlog)
 

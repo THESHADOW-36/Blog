@@ -1,0 +1,12 @@
+.profile {
+   background-image: url(./../../assets/profile.jpg);
+   padding: 80px 40px 20px;
+   background-position: center;
+   background-size: cover;
+   min-height: 100vh;
+}
+
+.proPic {
+   width: 160px;
+   height: 160px;
+}

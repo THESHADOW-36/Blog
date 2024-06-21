@@ -1,0 +1,18 @@
+.userList {
+   background-image: url(./../../assets/userList.jpg);
+   background-position: top;
+   background-size: cover;
+   background-repeat: no-repeat;
+   width: 100%;
+   min-height: 100vh;
+   padding: 50px 30px 0px;
+}
+
+.userImg {
+   width: 120px;
+   height: 120px;
+}
+
+/* .userListCard{
+   min-width: 226px;
+} */

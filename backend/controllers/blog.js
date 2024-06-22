@@ -4,9 +4,11 @@ import User from "../models/user.js";
 import ErrorResponse from "../utils/errorResponse.js";
 
 export const addBlog = asyncHandler(async (req, res, next) => {
-   const { title, description, category, image } = req.body;
+   const { title, description, category } = req.body;
 
    const user = await User.findById(req.user.id).select('-role -phone -dob -password -blog -createdAt -__v')
+
+   const image = req.file ? req.file.filename : null;
 
    const blog = await Blog.create({ title, description, category, image, createdBy: user });
 
@@ -21,10 +23,22 @@ export const getBlog = asyncHandler(async (req, res, next) => {
    res.status(200).json({ success: true, blog });
 })
 
+export const getSingleBlog = asyncHandler(async (req, res, next) => {
+   const { id } = req.params;
+
+   const blog = await Blog.findById(id);
+
+   if (!blog) return next(new ErrorResponse('No Blog Data', 401))
+
+   res.status(200).json({ success: true, blog });
+})
+
 export const editBlog = asyncHandler(async (req, res, next) => {
    const { id } = req.params;
 
-   const { title, description, category, image } = req.body;
+   const { title, description, category } = req.body;
+
+   const image = req.file ? req.file.filename : null;
 
    const blog = await Blog.findByIdAndUpdate(id, { title, description, category, image, updatedBy: req.user.id, updatedAt: new Date() }, { new: true });
 

@@ -25,7 +25,7 @@
    height: 40px;
    display: flex;
    align-items: center;
-   justify-content: space-between;
+   justify-content: center;
 }
 
 .bookmarkAction>p {
@@ -38,10 +38,6 @@
 
 .bookmarkAction>p:hover {
    font-size: 18px;
-}
-
-.bookmarkAction>p:nth-child(1) {
-   border-right: 1px solid rgb(55, 55, 55);
 }
 
 

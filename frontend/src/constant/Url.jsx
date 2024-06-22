@@ -12,8 +12,8 @@ const deleteUser = "http://localhost:8000/api/v1/auth/delete-user/"  // delete
 // Blog
 const addBlog = "http://localhost:8000/api/v1/blog/content"  // Post
 const getBlog = "http://localhost:8000/api/v1/blog/content"  // get
-// const getSingleBlog = "http://localhost:8000/api/v1/blog/content/"  // get
-const edit = "http://localhost:8000/api/v1/blog/content/"  // put
+const getSingleBlog = "http://localhost:8000/api/v1/blog/content/"  // get
+const editBlog = "http://localhost:8000/api/v1/blog/content/"  // put
 const deleteBlog = "http://localhost:8000/api/v1/blog/content/"  // delete
 
 // Bookmark
@@ -32,8 +32,8 @@ export const Url = {
    deleteUser,
    addBlog,
    getBlog,
-   // getSingleBlog,
-   edit,
+   getSingleBlog,
+   editBlog,
    deleteBlog,
    addBookmark,
    getBookmark,

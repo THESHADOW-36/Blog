@@ -7,6 +7,7 @@ import Navbar from './components/navbar/Navbar';
 import Bookmark from './pages/bookmark/Bookmark';
 import Profile from './pages/profile/Profile';
 import UserList from './pages/userList/UserList';
+import AddBlog from './pages/blog/AddBlog';
 
 function App() {
   return (
@@ -24,6 +25,8 @@ function App() {
           <Route path='/profile/:id' element={<Profile />} />
           <Route path='/user-list' element={<UserList />} />
           <Route path='/user-list/:id' element={<UserList />} />
+          <Route path='/add-blog' element={<AddBlog />} />
+          <Route path='/edit-blog/:id' element={<AddBlog />} />
         </Routes>
       </div>
     </div >

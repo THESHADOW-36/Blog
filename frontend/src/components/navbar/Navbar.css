@@ -27,9 +27,17 @@
    display: flex;
 }
 
+.logout,
 .navContent>div {
+   color: rgb(200, 200, 200);
    font-size: 18px;
    font-weight: 500;
-   margin-left: 20px;
+   margin: 0px 20px;
    cursor: pointer;
+   transition: 0.3s;
+}
+
+.logout:hover,
+.navContent>div:hover {
+   color: white;
 }

@@ -1,4 +1,4 @@
-.profile {
+.blogForm {
    background-image: url(./../../assets/profile.jpg);
    padding: 88px 40px 20px;
    background-position: center;
@@ -6,7 +6,11 @@
    min-height: 100vh;
 }
 
-.proPic {
-   width: 160px;
+.blogImageSize {
+   width: 80%;
+   height: 200px;
+}
+
+.blogFormDes{
    height: 160px;
 }

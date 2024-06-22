@@ -27,7 +27,7 @@
 }
 
 .blogInfo {
-   height: 200px;
+   height: 220px;
 }
 
 .blogTitle {
@@ -52,4 +52,25 @@
    -webkit-line-clamp: 4;
    -webkit-box-orient: vertical;
    overflow: hidden;
+}
+
+.blogImgEdit>div {
+   background-color: rgba(125, 125, 125, 0.6);
+   width: 100%;
+   text-align: center;
+   font-size: 18px;
+   font-weight: 500;
+   display: none;
+   align-items: center;
+   justify-content: center;
+   padding: 4px;
+   cursor: pointer;
+}
+
+.blogImgEdit>div>i {
+   margin-right: 10px;
+}
+
+.blogImgEdit:hover>div {
+   display: flex;
 }

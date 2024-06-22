@@ -7,11 +7,13 @@ import { Url } from '../../constant/Url';
 import { MyContext } from '../../constant/Context'
 import DateFormat from '../../components/utils/DateFormat'
 import toast from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
 
 const Blog = () => {
    const [blog, setBlog] = useState([]);
    const [bookmark, setBookmark] = useState([]);
-   console.log(bookmark)
+
+   const router = useNavigate();
 
    const { headers } = useContext(MyContext)
 
@@ -105,7 +107,12 @@ const Blog = () => {
                   return (
                      <div className={`col-${colOrder[colIndex]} mb-4`} key={index}>
                         <div className='card'>
-                           <img className='blogImg card-img-top object-fit-cover' src={blogImg} alt="" />
+                           <div className='blogImgEdit position-relative'>
+                              <img className='blogImg card-img-top object-fit-cover' src={`http://localhost:8000/uploads/${data.image}`} alt="" />
+                              <div className='position-absolute bottom-0 start-0 text-white' onClick={() => router(`/edit-blog/${data._id}`)}>
+                                 <i class="fa-solid fa-pen-to-square"></i><p>Edit</p>
+                              </div>
+                           </div>
                            <div className='blogInfo card-body d-flex flex-column justify-content-between'>
                               <div>
                                  <div className='d-flex align-items-center justify-content-between mb-2'>
@@ -118,9 +125,9 @@ const Blog = () => {
                                  </div>
                                  <p className='blogDescription card-text'>{data.description}</p>
                               </div>
-                              <div className='d-flex justify-content-between'>
-                                 <p>{DateFormat(data?.createdAt)}</p>
-                                 {/* <p>{data.createdBy}</p> */}
+                              <div className='d-flex justify-content-between mt-2'>
+                                 <p><i className="fa-regular fa-calendar fa-lg me-2"></i> {DateFormat(data?.createdAt)}</p>
+                                 <p><i className="fa-regular fa-circle-user fa-lg me-2"></i> {data.createdBy.firstName} {data.createdBy.lastName}</p>
                               </div>
                            </div>
                         </div>

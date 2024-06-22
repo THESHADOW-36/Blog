@@ -3,7 +3,6 @@ import './Bookmark.css'
 import axios from 'axios';
 import { MyContext } from '../../constant/Context';
 import { Url } from '../../constant/Url';
-import bmImg from './../../assets/web_app.jpg'
 import DateFormat from '../../components/utils/DateFormat';
 
 const Bookmark = () => {
@@ -50,9 +49,8 @@ const Bookmark = () => {
                      <div className='col-6 mb-4' key={index}>
                         <div className='bookmarkInfo rounded d-flex'>
                            <div className='bookmarkImg'>
-                              <img className='w-100 h-100 rounded-start object-fit-cover' src={bmImg} alt="" />
+                              <img className='w-100 h-100 rounded-start object-fit-cover' src={`http://localhost:8000/uploads/${data.image}`} alt="" />
                               <div className='bookmarkAction'>
-                                 <p>View</p>
                                  <p onClick={() => removeBookmark(data._id)}>Remove</p>
                               </div>
                            </div>

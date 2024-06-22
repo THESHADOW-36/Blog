@@ -70,14 +70,14 @@ const Register = () => {
          <div className='formContainer'>
             <h3 className='formTitle'>Register</h3>
             <form onSubmit={handleSubmit}>
-               <div className='d-flex '>
-                  <div className='formLay w-50 me-2'>
+               <div className='d-flex flex-column flex-md-row'>
+                  <div className='formLay w-100 me-md-2'>
                      <input className='formInput' type="text" name='firstName' placeholder='First Name' value={userData.firstName} onChange={handleChange} />
                      {validation.firstName &&
                         <p className='formValidation'>Enter your first name</p>
                      }
                   </div>
-                  <div className='formLay w-50 ms-2'>
+                  <div className='formLay w-100 ms-md-2'>
                      <input className='formInput' type="text" name='lastName' placeholder='Last Name' value={userData.lastName} onChange={handleChange} />
                      {validation.lastName &&
                         <p className='formValidation'>Enter your last name</p>

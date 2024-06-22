@@ -46,15 +46,15 @@ const Bookmark = () => {
             {bookmark[0] ?
                <>
                   {bookmark?.map((data, index) => (
-                     <div className='col-6 mb-4' key={index}>
-                        <div className='bookmarkInfo rounded d-flex'>
-                           <div className='bookmarkImg'>
-                              <img className='w-100 h-100 rounded-start object-fit-cover' src={`http://localhost:8000/uploads/${data.image}`} alt="" />
-                              <div className='bookmarkAction'>
+                     <div className='col-12 col-lg-6 mb-4' key={index}>
+                        <div className='bookmarkInfo rounded w-100 d-flex flex-lg-row flex-column'>
+                           <div className='bookmarkImg w-100'>
+                              <img className='w-100 h-100 rounded object-fit-cover' src={`http://localhost:8000/uploads/${data.image}`} alt="" />
+                              <div className='bookmarkAction w-100 w-lg-50'>
                                  <p onClick={() => removeBookmark(data._id)}>Remove</p>
                               </div>
                            </div>
-                           <div className='bookmarkImg bg-white rounded-end w-50 d-flex flex-column justify-content-between p-2 py-3'>
+                           <div className='bookmarkText bg-white rounded w-100 d-flex flex-column justify-content-between p-2 py-3'>
                               <div>
                                  <p className='bookmarkTitle'>{data.title}</p>
                                  <p className='bookmarkDescription'>{data.description}</p>

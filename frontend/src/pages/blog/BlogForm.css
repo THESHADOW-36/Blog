@@ -14,3 +14,20 @@
 .blogFormDes{
    height: 160px;
 }
+
+
+@media screen and (max-width:992px) {
+
+   .blogImageSize {
+      height: 300px;
+   }
+
+}
+
+@media screen and (max-width:576px) {
+
+   .blogImageSize {
+      height: 130px;
+   }
+
+}

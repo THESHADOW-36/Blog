@@ -46,11 +46,10 @@ const Login = () => {
                toast.success("Logged In Successfully")
             })
             .catch((err) => {
-               toast.error(err.response.data.error)
-               if (err.response.data.error === "User is not found") {
+               if (err.response.data.error === "User not found") {
                   setValidation({ ...validation, email: true })
                }
-               if (err.response.data.error === "Incorrect Password") {
+               if (err.response.data.error === "Invalid password") {
                   setValidation({ ...validation, password: true })
                }
             })

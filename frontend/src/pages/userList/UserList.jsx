@@ -77,18 +77,20 @@ const UserList = () => {
       <div className='userList'>
          <div className='py-4 row'>
             {users?.map((user, index) => (
-               <div className='col-3 px-4 mb-5' key={index}>
+               <div className='col-12 col-sm-4 col-lg-3 px-3 px-lg-4 mb-5' key={index}>
                   <div className='userListCard card p-3 d-flex flex-column align-items-center'>
                      <div className='userImg mt-3'>
                         <img className='w-100 h-100 rounded-circle' src={propic} alt="" />
                      </div>
-                     <p className='fs-4 fw-semibold mt-2'>{user.firstName} {user.lastName}</p>
+                     <p className='fs-4 fw-semibold mt-2 text-center'>{user.firstName} {user.lastName}</p>
                      <p className='text-secondary'>{user.email}</p>
                      <p className='text-secondary mt-2'>{user.role}</p>
                   </div>
                   <div className='d-flex'>
-                     <button className='btn btn-primary w-50 me-1 mt-2' onClick={() => getSingleUser(user._id)}>View</button>
-                     <button className='btn btn-danger w-50 ms-1 mt-2' onClick={() => openModal(user._id)}>Delete</button>
+                     <button className='btn btn-primary w-100 me-1 mt-2' onClick={() => getSingleUser(user._id)}>View</button>
+                     {user.role !== "Admin" &&
+                        <button className='btn btn-danger w-100 ms-1 mt-2' onClick={() => openModal(user._id)}>Delete</button>
+                     }
                   </div>
 
                   {modal &&

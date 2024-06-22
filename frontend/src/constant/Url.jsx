@@ -1,27 +1,34 @@
 
+//Hosted Site
+const localhost = "http://localhost:8000"
+const hostedUrl = "https://blog-vspx.onrender.com"
+const imgUrl = "https://blog-vspx.onrender.com/uploads/"
+
 // Auth
-const register = "http://localhost:8000/api/v1/auth/register"  // Post
-const login = "http://localhost:8000/api/v1/auth/login"  // Post
-const currentUser = "http://localhost:8000/api/v1/auth/current-user"  // get
-const singleUser = "http://localhost:8000/api/v1/auth/single-user/"  // get
-const allUser = "http://localhost:8000/api/v1/auth/all-user"  // get
-const editCurrentUser = "http://localhost:8000/api/v1/auth/edit-user"  // put
-const editSingleUser = "http://localhost:8000/api/v1/auth/edit-user/"  // put
-const deleteUser = "http://localhost:8000/api/v1/auth/delete-user/"  // delete
+const register = "https://blog-vspx.onrender.com/api/v1/auth/register"  // Post
+const login = "https://blog-vspx.onrender.com/api/v1/auth/login"  // Post
+const currentUser = "https://blog-vspx.onrender.com/api/v1/auth/current-user"  // get
+const singleUser = "https://blog-vspx.onrender.com/api/v1/auth/single-user/"  // get
+const allUser = "https://blog-vspx.onrender.com/api/v1/auth/all-user"  // get
+const editCurrentUser = "https://blog-vspx.onrender.com/api/v1/auth/edit-user"  // put
+const editSingleUser = "https://blog-vspx.onrender.com/api/v1/auth/edit-user/"  // put
+const deleteUser = "https://blog-vspx.onrender.com/api/v1/auth/delete-user/"  // delete
 
 // Blog
-const addBlog = "http://localhost:8000/api/v1/blog/content"  // Post
-const getBlog = "http://localhost:8000/api/v1/blog/content"  // get
-const getSingleBlog = "http://localhost:8000/api/v1/blog/content/"  // get
-const editBlog = "http://localhost:8000/api/v1/blog/content/"  // put
-const deleteBlog = "http://localhost:8000/api/v1/blog/content/"  // delete
+const addBlog = "https://blog-vspx.onrender.com/api/v1/blog/content"  // Post
+const getBlog = "https://blog-vspx.onrender.com/api/v1/blog/content"  // get
+const getSingleBlog = "https://blog-vspx.onrender.com/api/v1/blog/content/"  // get
+const editBlog = "https://blog-vspx.onrender.com/api/v1/blog/content/"  // put
+const deleteBlog = "https://blog-vspx.onrender.com/api/v1/blog/content/"  // delete
 
 // Bookmark
-const addBookmark = "http://localhost:8000/api/v1/blog/bookmark"  // Post
-const getBookmark = "http://localhost:8000/api/v1/blog/bookmark"  // get
-const removeBookmark = "http://localhost:8000/api/v1/blog/bookmark"  // put
+const addBookmark = "https://blog-vspx.onrender.com/api/v1/blog/bookmark"  // Post
+const getBookmark = "https://blog-vspx.onrender.com/api/v1/blog/bookmark"  // get
+const removeBookmark = "https://blog-vspx.onrender.com/api/v1/blog/bookmark"  // put
 
 export const Url = {
+   hostedUrl,
+   imgUrl,
    register,
    login,
    currentUser,

@@ -174,7 +174,7 @@ const AddBlog = () => {
                            {imagePreview ? (
                               <img src={imagePreview} className='w-100 h-100 rounded' alt='Preview' />
                            ) : (
-                              <img src={blog.image ? `http://localhost:8000/uploads/${blog?.image}` : blogImg} className='w-100 h-100 rounded' alt='Placeholder' />
+                              <img src={blog.image ? (Url.imgUrl + blog?.image) : blogImg} className='w-100 h-100 rounded' alt='Placeholder' />
                            )}
                         </div>
                      </div>

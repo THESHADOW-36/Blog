@@ -49,7 +49,7 @@ const Bookmark = () => {
                      <div className='col-12 col-lg-6 mb-4' key={index}>
                         <div className='bookmarkInfo rounded w-100 d-flex flex-lg-row flex-column'>
                            <div className='bookmarkImg w-100'>
-                              <img className='w-100 h-100 rounded object-fit-cover' src={`http://localhost:8000/uploads/${data.image}`} alt="" />
+                              <img className='w-100 h-100 rounded object-fit-cover' src={Url.imgUrl + data.image} alt="" />
                               <div className='bookmarkAction w-100 w-lg-50'>
                                  <p onClick={() => removeBookmark(data._id)}>Remove</p>
                               </div>

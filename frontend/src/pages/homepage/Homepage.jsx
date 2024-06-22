@@ -77,7 +77,6 @@ const Blog = () => {
 
    const columnOrders = [[3, 4, 5], [5, 4, 3]];
 
-
    useEffect(() => {
       getBlogContent();
       getBookmark();
@@ -87,7 +86,7 @@ const Blog = () => {
       <div className='homepage'>
          {blog[0] ?
             <div className='w-100 vh-100'>
-               <img className='w-100 h-100' src={`http://localhost:8000/uploads/${blog[0]?.image}`} alt="" />
+               <img className='w-100 h-100' src={Url.imgUrl + blog[0]?.image} alt="" />
                <div className='homeContentLay'>
                   <div className='w-100 p-3 mt-5'>
                      <div className='d-flex flex-column flex-lg-row justify-content-between mb-4' >
@@ -129,7 +128,7 @@ const Blog = () => {
                         <div className={`col-xl-${colOrder[colIndex]} col-md-6 mb-4`} key={index}>
                            <div className='card'>
                               <div className='blogImgEdit position-relative'>
-                                 <img className='blogImg card-img-top object-fit-cover' src={`http://localhost:8000/uploads/${data.image}`} alt="" />
+                                 <img className='blogImg card-img-top object-fit-cover' src={Url.imgUrl + data.image} alt="" />
                                  {isAdmin &&
                                     <div className='position-absolute bottom-0 start-0 text-white' onClick={() => router(`/edit-blog/${data._id}`)}>
                                        <i class="fa-solid fa-pen-to-square"></i><p>Edit</p>

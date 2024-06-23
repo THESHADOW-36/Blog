@@ -1,6 +1,6 @@
 
 //Hosted Site
-const localhost = "http://localhost:8000"
+const localhost = "http://localhost:8000/"
 const hostedUrl = "https://blog-vspx.onrender.com"
 const imgUrl = "https://blog-vspx.onrender.com/uploads/"
 

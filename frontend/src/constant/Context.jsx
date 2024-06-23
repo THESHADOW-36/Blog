@@ -26,7 +26,10 @@ const Context = ({ children }) => {
    }
 
    useEffect(() => {
-      getUserData();
+      if (token) {
+         getUserData();
+      }
+
       // eslint-disable-next-line
    }, [])
 

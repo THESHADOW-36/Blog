@@ -42,8 +42,9 @@ const Login = () => {
             .then((res) => {
                localStorage.setItem("UserToken", res.data.token)
                setUserData({ email: "", password: "" })
-               router('/')
                toast.success("Logged In Successfully")
+               router('/')
+               window.location.reload();
             })
             .catch((err) => {
                if (err.response.data.error === "User not found") {

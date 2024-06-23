@@ -32,7 +32,7 @@ export const login = asyncHandler(async (req, res, next) => {
 
     const token = user.getJWTWebToken();
 
-    res.status(200).json({ success: true, token });
+    res.status(200).json({ success: true, token, user });
 });
 
 export const allUser = asyncHandler(async (req, res, next) => {
